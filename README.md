@@ -6,6 +6,7 @@
 Ferramenta de exploração para **Node.js Deserialization (node-serialize)** com suporte à execução automatizada de payloads **Reverse Shell**.
 
 Este script foi feito para **gerar, codificar e opcionalmente enviar automaticamente** um payload malicioso para aplicações Node.js vulneráveis à deserialização. Ele suporta envio via JSON direto no corpo da requisição ou através de cookies.
+Criado para CTF (resolução) e quis postar o mesmo aqui. **Serve tanto para CTF ou ambiente real**!
 
 ---
 
