@@ -19,6 +19,10 @@ Este script foi feito para **gerar, codificar e opcionalmente enviar automaticam
 
 ---
 
+### Atenção:
+
+Ele passa o payload no campo "email" e o campo poderá/deverá ser alterado para o campo que a aplicação receberá!
+
 ## 📦 Requisitos
 
 - Python 3.6+
