@@ -7,9 +7,6 @@ Ferramenta de exploração para **Node.js Deserialization (node-serialize)** com
 
 Este script foi feito para **gerar, codificar e opcionalmente enviar automaticamente** um payload malicioso para aplicações Node.js vulneráveis à deserialização. Ele suporta envio via JSON direto no corpo da requisição ou através de cookies.
 
-> ✅ Ideal para testes em ambientes controlados, labs e CTFs.  
-> ⚠️ **Uso exclusivamente educacional e autorizado!**
-
 ---
 
 ## 🚀 Funcionalidades
